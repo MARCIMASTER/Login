@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      Ingreso al sistema 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" >
+<ion-card class="ion-padding">
+  <div style="text-align: center;">
+    <img alt="logo aiep" src="https://www.curriculumnacional.cl/estudiante/621/articles-180962_imagen_portada.thumb_iNormal.jpg" style="width: 50%; margin: 0 auto;">
+  </div><ion-card-header>
+      <ion-card-title>Ingrese sus credenciales</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="loginForm" (submit)="submitLoginForm()">
+        <ion-input class="ion-padding"
+          label="Email"
+          label-placement="floating" 
+          fill="outline"
+          formControlName="email" 
+          type="email"
+          errorText="Email es requerido y valido"
+          placeholder="Ingrese su email">
+        </ion-input>
+        <ion-input class="ion-margin-top"
+          label="Contraseña" 
+          label-placement="floating" 
+          fill="outline" 
+          formControlName="password"
+          type="password"
+          errorText="Contraseña es requerida, debe tener al menos 8 caracteres y contener al menos un número, una mayúscula y una minúscula "
+          placeholder="Ingrese su Password ">
+        </ion-input>
+      
+        <ion-button class="ion-padding-top" type="submit" [disabled]="!loginForm.valid" expand="block">Iniciar Sesión</ion-button>
+        <ion-button class="ion-padding-top" (click)="toRegister()" expand="block">Registrarse</ion-button>
+    
+      
+      </form>
+      
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

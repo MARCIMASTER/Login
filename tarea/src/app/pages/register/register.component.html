@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="text-center">
+      Registrarse
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-card class="ion-padding">
+    <div style="text-align: center;">
+      <img alt="logo aiep" src="https://www.curriculumnacional.cl/estudiante/621/articles-180962_imagen_portada.thumb_iNormal.jpg" style="width: 50%; margin: 0 auto;">
+    </div>
+    <ion-card-header>
+      <ion-card-title class="text-center">Creación de nuevo usuario</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="registerForm" (submit)="submitForm()">
+
+        
+        <ion-input class="ion-padding-top"
+          label="Correo"
+          type="email" 
+          label-placement="floating" 
+          fill="outline"
+          formControlName="email"
+          errorText="Correo es requerido"
+          placeholder="Ingrese un Correo">
+        </ion-input>
+
+        
+        <ion-input class="ion-margin-top"
+          label="Contraseña" 
+          type="password"
+          label-placement="floating" 
+          fill="outline"
+          formControlName="password"
+          errorText="campo requerido, 8 caracteres, una letra mayuscula y un numero como minimo"
+          placeholder="Ingrese su Contraseña ">
+        </ion-input>
+
+     
+        <ion-input class="ion-margin-top" 
+          label="Repetir Contraseña"
+          type="password" 
+          label-placement="floating" 
+          fill="outline"
+          formControlName="confirmPassword"
+          placeholder="Confirmar Contraseña ">
+        </ion-input>
+        <div *ngIf="registerForm.errors?.['passwordMismatch']">
+          <ion-text color="danger">Las contraseñas no coinciden</ion-text>
+        </div>
+
+        <!-- Botones Ingresar y Volver -->
+        <ion-button class="ion-padding-top" 
+          type="submit"
+          [disabled]="!registerForm.valid" 
+          expand="block">registrar
+        </ion-button>
+        <ion-button class="ion-padding-top" (click)="backToLogin()" expand="block">ir a la pagina principal</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
